@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary-navy: #0a2240;
+    --royal-blue: #145da0;
+    --gold: #c99b2e;
+    --gold-light: #e5c46d;
+    --gold-dark: #9e7518;
+  }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .font-serif-title {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-formal {
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* ==========================================================================
+   Dedicated Print Stylesheet for A4 Certificate & Student ID Card
+   Target: Single-page A4 Portrait Print & "Save as PDF" (210mm x 297mm)
+   ========================================================================== */
+@media print {
+  @page {
+    size: 210mm 297mm;
+    margin: 0mm;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #0a2240 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body.print-mode-certificate {
+    overflow: hidden !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+  }
+
+  /* Universal hide for screen-only elements, navigations, headers, and toolbars */
+  .no-print,
+  .print-hide,
+  header,
+  footer,
+  nav,
+  aside,
+  button,
+  .modal-backdrop,
+  [role="dialog"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Neutralize screen flex/overflow containers so certificate sits cleanly at page top */
+  #root,
+  #root > div,
+  main {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* -------------------------------------------------------------
+     A4 Certificate Printing Rules
+     ------------------------------------------------------------- */
+  #certificate {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+  }
+
+  #certificate > div {
+    max-width: 210mm !important;
+    width: 210mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .certificate-print-wrapper {
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    display: block !important;
+    width: 210mm !important;
+    height: auto !important;
+  }
+
+  #a4-certificate-sheet,
+  .certificate-print-sheet {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 296mm !important;
+    min-height: 296mm !important;
+    max-height: 296.5mm !important;
+    margin: 0 auto !important;
+    padding: 9mm 12mm 8mm !important;
+    box-sizing: border-box !important;
+    border: 6px solid #0a2240 !important;
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+    transform: none !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+  }
+
+  /* When printing certificate: hide student ID card */
+  body:not(.print-mode-idcard) #student-id-section {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* -------------------------------------------------------------
+     Student ID Card Printing Rules (When triggered from ID card)
+     ------------------------------------------------------------- */
+  body.print-mode-idcard #certificate {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  body.print-mode-idcard #student-id-section {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 20mm !important;
+    background: #ffffff !important;
+    border: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  body.print-mode-idcard #student-id-card {
+    box-shadow: none !important;
+    border-width: 2px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}

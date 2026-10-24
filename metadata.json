@@ -1,0 +1,6 @@
+{
+  "name": "Bright Future Technical Academy",
+  "description": "Vocational training institute offering hands-on technical courses in Computer Training, Mobile Repairing, Electrical Work, Hardware & Networking, and Tally ERP.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,18 @@
+# Robots.txt for Bright Future Technical Academy
+User-agent: *
+Allow: /
+Allow: /assets/
+
+# Disallow private student areas, authentication flows, and dynamic applicant data
+Disallow: /portal
+Disallow: /portal/
+Disallow: /#/portal
+Disallow: /#/login
+Disallow: /#/signup
+Disallow: /*?record=*
+Disallow: /*?cert=*
+Disallow: /*?app=*
+Disallow: /*?student=*
+
+# Point search engine crawlers to the XML sitemap
+Sitemap: https://ais-pre-555xpvuvlvplksbtxigqo7-518097202526.asia-northeast1.run.app/sitemap.xml
